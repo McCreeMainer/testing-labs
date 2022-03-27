@@ -1,22 +1,27 @@
 package lesson7.task1
 
 import org.junit.jupiter.api.Test
-import org.junit.jupiter.api.assertDoesNotThrow
 import java.io.File
 import kotlin.test.assertEquals
 import kotlin.test.assertTrue
+import kotlin.test.fail
 
 class TestAlignFileByWidth {
 
     @Test
     fun `Test alignFileByWidth files`() {
         val resLocation = "src/test/resources/TestFiles"
+        val outLocation = "$resLocation/out"
+        val d = File(outLocation)
+        if (!d.exists() || !d.isDirectory) d.mkdir()
         val spacePattern = """\s+""".toRegex()
         for (file in File(resLocation).walkTopDown()) {
             if (!file.isFile) continue
 
-            assertDoesNotThrow("Fail on ${file.name} : Unexpected Exception") {
+            try {
                 alignFileByWidth("$resLocation/${file.name}", "$resLocation/out/${file.name}")
+            } catch (e: Throwable) {
+                fail("Fail on ${file.name} : Unexpected Exception")
             }
 
             val original = File("$resLocation/${file.name}").readLines()

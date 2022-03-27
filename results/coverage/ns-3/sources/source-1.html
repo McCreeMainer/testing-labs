@@ -1,0 +1,226 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > FilesKt</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/highlight-idea.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.pack.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">lesson7.task1</a>
+</div>
+
+<h1>Coverage Summary for Class: FilesKt (lesson7.task1)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Branch, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+<th class="coverageStat 
+">
+  Instruction, %
+</th>
+</tr>
+<tr>
+  <td class="name">FilesKt</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (2/2)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    85,7%
+  </span>
+  <span class="absValue">
+    (36/42)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (42/42)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    99,1%
+  </span>
+  <span class="absValue">
+    (341/344)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<div class="sourceCode" id="sourceCode"><i class="no-highlight">1</i>&nbsp;@file:Suppress(&quot;UNUSED_PARAMETER&quot;, &quot;ConvertCallChainIntoSequence&quot;)
+<i class="no-highlight">2</i>&nbsp;
+<i class="no-highlight">3</i>&nbsp;package lesson7.task1
+<i class="no-highlight">4</i>&nbsp;
+<i class="no-highlight">5</i>&nbsp;import java.io.File
+<i class="no-highlight">6</i>&nbsp;import kotlin.text.StringBuilder
+<i class="no-highlight">7</i>&nbsp;
+<i class="no-highlight">8</i>&nbsp;// Урок 7: работа с файлами
+<i class="no-highlight">9</i>&nbsp;// Урок интегральный, поэтому его задачи имеют сильно увеличенную стоимость
+<i class="no-highlight">10</i>&nbsp;// Максимальное количество баллов = 55
+<i class="no-highlight">11</i>&nbsp;// Рекомендуемое количество баллов = 20
+<i class="no-highlight">12</i>&nbsp;// Вместе с предыдущими уроками (пять лучших, 3-7) = 55/103
+<i class="no-highlight">13</i>&nbsp;
+<i class="no-highlight">14</i>&nbsp;/**
+<i class="no-highlight">15</i>&nbsp; * Сложная (20 баллов)
+<i class="no-highlight">16</i>&nbsp; *
+<i class="no-highlight">17</i>&nbsp; * Во входном файле с именем inputName содержится некоторый текст (в том числе, и на русском языке).
+<i class="no-highlight">18</i>&nbsp; * Вывести его в выходной файл с именем outputName, выровняв по левому и правому краю относительно
+<i class="no-highlight">19</i>&nbsp; * самой длинной строки.
+<i class="no-highlight">20</i>&nbsp; * Выравнивание производить, вставляя дополнительные пробелы между словами: равномерно по всей строке
+<i class="no-highlight">21</i>&nbsp; *
+<i class="no-highlight">22</i>&nbsp; * Слова внутри строки отделяются друг от друга одним или более пробелом.
+<i class="no-highlight">23</i>&nbsp; *
+<i class="no-highlight">24</i>&nbsp; * Следующие правила должны быть выполнены:
+<i class="no-highlight">25</i>&nbsp; * 1) Каждая строка входного и выходного файла не должна начинаться или заканчиваться пробелом.
+<i class="no-highlight">26</i>&nbsp; * 2) Пустые строки или строки из пробелов трансформируются в пустые строки без пробелов.
+<i class="no-highlight">27</i>&nbsp; * 3) Строки из одного слова выводятся без пробелов.
+<i class="no-highlight">28</i>&nbsp; * 4) Число строк в выходном файле должно быть равно числу строк во входном (в т. ч. пустых).
+<i class="no-highlight">29</i>&nbsp; *
+<i class="no-highlight">30</i>&nbsp; * Равномерность определяется следующими формальными правилами:
+<i class="no-highlight">31</i>&nbsp; * 5) Число пробелов между каждыми двумя парами соседних слов не должно отличаться более, чем на 1.
+<i class="no-highlight">32</i>&nbsp; * 6) Число пробелов между более левой парой соседних слов должно быть больше или равно числу пробелов
+<i class="no-highlight">33</i>&nbsp; *    между более правой парой соседних слов.
+<i class="no-highlight">34</i>&nbsp; *
+<i class="no-highlight">35</i>&nbsp; * Следует учесть, что входной файл может содержать последовательности из нескольких пробелов  между слвоами. Такие
+<i class="no-highlight">36</i>&nbsp; * последовательности следует учитывать при выравнивании и при необходимости избавляться от лишних пробелов.
+<i class="no-highlight">37</i>&nbsp; * �?з этого следуют следующие правила:
+<i class="no-highlight">38</i>&nbsp; * 7) В самой длинной строке каждая пара соседних слов должна быть отделена В ТОЧНОСТ�? одним пробелом
+<i class="no-highlight">39</i>&nbsp; * 8) Если входной файл удовлетворяет требованиям 1-7, то он должен быть в точности идентичен выходному файлу
+<i class="no-highlight">40</i>&nbsp; */
+<i class="no-highlight">41</i>&nbsp;fun countLen(lst: List&lt;String&gt;): Int {
+<b class="fc"><i class="no-highlight">42</i>&nbsp;    var len = 0</b>
+<b class="pc"><i class="no-highlight">43</i>&nbsp;    for (i in 0..lst.lastIndex)</b>
+<b class="fc"><i class="no-highlight">44</i>&nbsp;        len += lst[i].length</b>
+<b class="fc"><i class="no-highlight">45</i>&nbsp;    return len</b>
+<i class="no-highlight">46</i>&nbsp;}
+<i class="no-highlight">47</i>&nbsp;
+<i class="no-highlight">48</i>&nbsp;fun alignFileByWidth(inputName: String, outputName: String) {
+<b class="pc"><i class="no-highlight">49</i>&nbsp;    var writer = File(outputName).bufferedWriter()</b>
+<b class="fc"><i class="no-highlight">50</i>&nbsp;    var maxLen = 0</b>
+<b class="fc"><i class="no-highlight">51</i>&nbsp;    for (line in File(inputName).readLines()) {</b>
+<b class="fc"><i class="no-highlight">52</i>&nbsp;        var strForHelp = &quot;  &quot; + line</b>
+<b class="fc"><i class="no-highlight">53</i>&nbsp;        var listSplit = strForHelp.split(Regex(&quot;&quot;&quot; +&quot;&quot;&quot;))</b>
+<b class="fc"><i class="no-highlight">54</i>&nbsp;        var lstStr = mutableListOf&lt;String&gt;()</b>
+<b class="fc"><i class="no-highlight">55</i>&nbsp;        lstStr = listSplit.toMutableList()</b>
+<b class="fc"><i class="no-highlight">56</i>&nbsp;        if (lstStr[lstStr.lastIndex] == &quot;&quot;)</b>
+<b class="fc"><i class="no-highlight">57</i>&nbsp;            lstStr.removeAt(lstStr.lastIndex)</b>
+<b class="fc"><i class="no-highlight">58</i>&nbsp;        maxLen = Math.max(maxLen, countLen(lstStr) + lstStr.size - 2)</b>
+<i class="no-highlight">59</i>&nbsp;    }
+<b class="fc"><i class="no-highlight">60</i>&nbsp;    for (line in File(inputName).readLines()) {</b>
+<b class="fc"><i class="no-highlight">61</i>&nbsp;        var strForHelp = &quot;  &quot; + line</b>
+<b class="fc"><i class="no-highlight">62</i>&nbsp;        var listSplit = strForHelp.split(Regex(&quot;&quot;&quot; +&quot;&quot;&quot;))</b>
+<b class="fc"><i class="no-highlight">63</i>&nbsp;        var lstStr = listSplit.toMutableList()</b>
+<b class="fc"><i class="no-highlight">64</i>&nbsp;        if (lstStr[lstStr.lastIndex] == &quot;&quot;)</b>
+<b class="fc"><i class="no-highlight">65</i>&nbsp;            lstStr.removeAt(lstStr.lastIndex)</b>
+<i class="no-highlight">66</i>&nbsp;
+<b class="fc"><i class="no-highlight">67</i>&nbsp;        if ((!(line.isEmpty())) &amp;&amp; (lstStr.size &gt; 2)) {</b>
+<b class="fc"><i class="no-highlight">68</i>&nbsp;            if (countLen(lstStr) + lstStr.size - 2 &lt; maxLen) {</b>
+<b class="fc"><i class="no-highlight">69</i>&nbsp;                writer.write(lstStr[1])</b>
+<b class="fc"><i class="no-highlight">70</i>&nbsp;                var countSpace = maxLen - (countLen(lstStr) + lstStr.size - 2)</b>
+<b class="fc"><i class="no-highlight">71</i>&nbsp;                var inOnePass = (Math.floor((countSpace / (lstStr.size - 2)).toDouble())).toInt()</b>
+<b class="fc"><i class="no-highlight">72</i>&nbsp;                var remain = countSpace % (lstStr.size - 2)</b>
+<b class="pc"><i class="no-highlight">73</i>&nbsp;                for (i in 2..lstStr.lastIndex) {</b>
+<b class="fc"><i class="no-highlight">74</i>&nbsp;                    if (remain &gt; 0) {</b>
+<b class="pc"><i class="no-highlight">75</i>&nbsp;                        for (j in 1..(inOnePass + 1 + 1))</b>
+<b class="fc"><i class="no-highlight">76</i>&nbsp;                            writer.write(&quot; &quot;)</b>
+<b class="fc"><i class="no-highlight">77</i>&nbsp;                        remain -= 1</b>
+<i class="no-highlight">78</i>&nbsp;                    } else {
+<b class="pc"><i class="no-highlight">79</i>&nbsp;                        for (j in 1..(inOnePass + 1))</b>
+<b class="fc"><i class="no-highlight">80</i>&nbsp;                            writer.write(&quot; &quot;)</b>
+<i class="no-highlight">81</i>&nbsp;                    }
+<b class="fc"><i class="no-highlight">82</i>&nbsp;                    writer.write(lstStr[i])</b>
+<i class="no-highlight">83</i>&nbsp;                }
+<i class="no-highlight">84</i>&nbsp;            } else {
+<b class="fc"><i class="no-highlight">85</i>&nbsp;                writer.write(lstStr[1])</b>
+<b class="pc"><i class="no-highlight">86</i>&nbsp;                for (i in 2..lstStr.lastIndex) {</b>
+<b class="fc"><i class="no-highlight">87</i>&nbsp;                    writer.write(&quot; &quot;)</b>
+<b class="fc"><i class="no-highlight">88</i>&nbsp;                    writer.write(lstStr[i])</b>
+<i class="no-highlight">89</i>&nbsp;                }
+<i class="no-highlight">90</i>&nbsp;            }
+<i class="no-highlight">91</i>&nbsp;        }
+<b class="fc"><i class="no-highlight">92</i>&nbsp;        if (lstStr.size == 2)</b>
+<b class="fc"><i class="no-highlight">93</i>&nbsp;            writer.write(lstStr[1])</b>
+<b class="fc"><i class="no-highlight">94</i>&nbsp;        writer.newLine()</b>
+<i class="no-highlight">95</i>&nbsp;    }
+<b class="fc"><i class="no-highlight">96</i>&nbsp;    writer.close()</b>
+<i class="no-highlight">97</i>&nbsp;}
+</div>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+        var codeBlock = document.getElementById('sourceCode');
+
+        if (codeBlock) {
+            hljs.highlightBlock(codeBlock);
+        }
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2022-03-27 20:16</div>
+</div>
+</body>
+</html>
