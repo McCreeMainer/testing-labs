@@ -1,0 +1,163 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > ParseKt</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/highlight-idea.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.pack.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">lesson6.task1</a>
+</div>
+
+<h1>Coverage Summary for Class: ParseKt (lesson6.task1)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Branch, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+<th class="coverageStat 
+">
+  Instruction, %
+</th>
+</tr>
+<tr>
+  <td class="name">ParseKt</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    83,3%
+  </span>
+  <span class="absValue">
+    (5/6)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (11/11)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (76/76)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<div class="sourceCode" id="sourceCode"><i class="no-highlight">1</i>&nbsp;@file:Suppress(&quot;UNUSED_PARAMETER&quot;, &quot;ConvertCallChainIntoSequence&quot;)
+<i class="no-highlight">2</i>&nbsp;
+<i class="no-highlight">3</i>&nbsp;package lesson6.task1
+<i class="no-highlight">4</i>&nbsp;
+<i class="no-highlight">5</i>&nbsp;
+<i class="no-highlight">6</i>&nbsp;// Урок 6: разбор строк, исключения
+<i class="no-highlight">7</i>&nbsp;// Максимальное количество баллов = 13
+<i class="no-highlight">8</i>&nbsp;// Рекомендуемое количество баллов = 11
+<i class="no-highlight">9</i>&nbsp;// Вместе с предыдущими уроками (пять лучших, 2-6) = 40/54
+<i class="no-highlight">10</i>&nbsp;
+<i class="no-highlight">11</i>&nbsp;/**
+<i class="no-highlight">12</i>&nbsp; * Сложная (6 баллов)
+<i class="no-highlight">13</i>&nbsp; *
+<i class="no-highlight">14</i>&nbsp; * Строка состоит из набора слов, отделённых друг от друга одним пробелом.
+<i class="no-highlight">15</i>&nbsp; * Определить, имеются ли в строке повторяющиеся слова, идущие друг за другом.
+<i class="no-highlight">16</i>&nbsp; * Слова, отличающиеся только регистром, считать совпадающими.
+<i class="no-highlight">17</i>&nbsp; * Вернуть индекс начала первого повторяющегося слова, или -1, если повторов нет.
+<i class="no-highlight">18</i>&nbsp; * Пример: &quot;Он пошёл в в школу&quot; =&gt; результат 9 (индекс первого &#39;в&#39;)
+<i class="no-highlight">19</i>&nbsp; */
+<i class="no-highlight">20</i>&nbsp;fun firstDuplicateIndex(str: String): Int {
+<b class="fc"><i class="no-highlight">21</i>&nbsp;    var useStr = str + &#39; &#39;</b>
+<b class="fc"><i class="no-highlight">22</i>&nbsp;    var ans = -1</b>
+<b class="fc"><i class="no-highlight">23</i>&nbsp;    var listWords = str.split(&quot; &quot;)</b>
+<b class="pc"><i class="no-highlight">24</i>&nbsp;    for (i in 0..listWords.lastIndex - 1) {</b>
+<b class="fc"><i class="no-highlight">25</i>&nbsp;        if ((listWords[i].toLowerCase()) == (listWords[i + 1].toLowerCase())) {</b>
+<b class="fc"><i class="no-highlight">26</i>&nbsp;            ans += 1</b>
+<b class="fc"><i class="no-highlight">27</i>&nbsp;            return ans</b>
+<i class="no-highlight">28</i>&nbsp;        }
+<b class="fc"><i class="no-highlight">29</i>&nbsp;        ans += listWords[i].length</b>
+<b class="fc"><i class="no-highlight">30</i>&nbsp;        ans += 1</b>
+<i class="no-highlight">31</i>&nbsp;    }
+<b class="fc"><i class="no-highlight">32</i>&nbsp;    ans = -1</b>
+<b class="fc"><i class="no-highlight">33</i>&nbsp;    return ans</b>
+<i class="no-highlight">34</i>&nbsp;}
+</div>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+        var codeBlock = document.getElementById('sourceCode');
+
+        if (codeBlock) {
+            hljs.highlightBlock(codeBlock);
+        }
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2022-03-27 20:16</div>
+</div>
+</body>
+</html>

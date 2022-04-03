@@ -1,0 +1,206 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > Item</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/highlight-idea.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.pack.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">lesson5.task1</a>
+</div>
+
+<h1>Coverage Summary for Class: Item (lesson5.task1)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Branch, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+<th class="coverageStat 
+">
+  Instruction, %
+</th>
+</tr>
+<tr>
+  <td class="name">Item</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/1)
+  </span>
+</td>
+    <td class="coverageStat"/>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (26/26)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<div class="sourceCode" id="sourceCode"><i class="no-highlight">1</i>&nbsp;@file:Suppress(&quot;UNUSED_PARAMETER&quot;, &quot;ConvertCallChainIntoSequence&quot;)
+<i class="no-highlight">2</i>&nbsp;
+<i class="no-highlight">3</i>&nbsp;package lesson5.task1
+<i class="no-highlight">4</i>&nbsp;
+<i class="no-highlight">5</i>&nbsp;
+<i class="no-highlight">6</i>&nbsp;// Урок 5: ассоциативные массивы и множества
+<i class="no-highlight">7</i>&nbsp;// Максимальное количество баллов = 14
+<i class="no-highlight">8</i>&nbsp;// Рекомендуемое количество баллов = 9
+<i class="no-highlight">9</i>&nbsp;// Вместе с предыдущими уроками = 33/47
+<i class="no-highlight">10</i>&nbsp;
+<i class="no-highlight">11</i>&nbsp;/**
+<i class="no-highlight">12</i>&nbsp; * Очень сложная (8 баллов)
+<i class="no-highlight">13</i>&nbsp; *
+<i class="no-highlight">14</i>&nbsp; * Входными данными является ассоциативный массив
+<i class="no-highlight">15</i>&nbsp; * &quot;название сокровища&quot;-&quot;пара (вес сокровища, цена сокровища)&quot;
+<i class="no-highlight">16</i>&nbsp; * и вместимость вашего рюкзака.
+<i class="no-highlight">17</i>&nbsp; * Необходимо вернуть множество сокровищ с максимальной суммарной стоимостью,
+<i class="no-highlight">18</i>&nbsp; * которые вы можете унести в рюкзаке.
+<i class="no-highlight">19</i>&nbsp; *
+<i class="no-highlight">20</i>&nbsp; * Перед решением этой задачи лучше прочитать статью Википедии &quot;Динамическое программирование&quot;.
+<i class="no-highlight">21</i>&nbsp; *
+<i class="no-highlight">22</i>&nbsp; * Например:
+<i class="no-highlight">23</i>&nbsp; *   bagPacking(
+<i class="no-highlight">24</i>&nbsp; *     mapOf(&quot;Кубок&quot; to (500 to 2000), &quot;Слиток&quot; to (1000 to 5000)),
+<i class="no-highlight">25</i>&nbsp; *     850
+<i class="no-highlight">26</i>&nbsp; *   ) -&gt; setOf(&quot;Кубок&quot;)
+<i class="no-highlight">27</i>&nbsp; *   bagPacking(
+<i class="no-highlight">28</i>&nbsp; *     mapOf(&quot;Кубок&quot; to (500 to 2000), &quot;Слиток&quot; to (1000 to 5000)),
+<i class="no-highlight">29</i>&nbsp; *     450
+<i class="no-highlight">30</i>&nbsp; *   ) -&gt; emptySet()
+<i class="no-highlight">31</i>&nbsp; */
+<i class="no-highlight">32</i>&nbsp;
+<b class="fc"><i class="no-highlight">33</i>&nbsp;class Item(var name: String, var weight: Int, var price: Int)</b>
+<i class="no-highlight">34</i>&nbsp;class BagPack(var iteams: MutableList&lt;String&gt;, var price: Int)
+<i class="no-highlight">35</i>&nbsp;
+<i class="no-highlight">36</i>&nbsp;fun bagPacking(treasures: Map&lt;String, Pair&lt;Int, Int&gt;&gt;, capacity: Int): Set&lt;String&gt; {
+<i class="no-highlight">37</i>&nbsp;    var items = mutableListOf&lt;Item&gt;()
+<i class="no-highlight">38</i>&nbsp;
+<i class="no-highlight">39</i>&nbsp;    var treasureList = treasures.toList()
+<i class="no-highlight">40</i>&nbsp;    for (i in 0..treasureList.size - 1)
+<i class="no-highlight">41</i>&nbsp;        items.add(Item(treasureList[i].first, treasureList[i].second.first, treasureList[i].second.second))
+<i class="no-highlight">42</i>&nbsp;
+<i class="no-highlight">43</i>&nbsp;    var bp: Array&lt;Array&lt;BagPack&gt;&gt; =
+<i class="no-highlight">44</i>&nbsp;        Array(items.size + 1, { Array(capacity + 1, { BagPack(mutableListOf(&quot;&quot;), 0) }) })
+<i class="no-highlight">45</i>&nbsp;
+<i class="no-highlight">46</i>&nbsp;    for (i in 0..items.size)
+<i class="no-highlight">47</i>&nbsp;        for (j in 0..capacity) {
+<i class="no-highlight">48</i>&nbsp;            if ((i == 0) || (j == 0))
+<i class="no-highlight">49</i>&nbsp;                bp[i][j] = BagPack(mutableListOf(&quot;&quot;), 0)
+<i class="no-highlight">50</i>&nbsp;            else if (i == 1) {
+<i class="no-highlight">51</i>&nbsp;                if (items[0].weight &lt;= j)
+<i class="no-highlight">52</i>&nbsp;                    bp[1][j] = BagPack(mutableListOf(items[0].name), items[0].price)
+<i class="no-highlight">53</i>&nbsp;                else
+<i class="no-highlight">54</i>&nbsp;                    bp[1][j] = BagPack(mutableListOf(&quot;&quot;), 0)
+<i class="no-highlight">55</i>&nbsp;            } else if (items[i - 1].weight &gt; j) {
+<i class="no-highlight">56</i>&nbsp;                bp[i][j] = bp[i - 1][j]
+<i class="no-highlight">57</i>&nbsp;            } else {
+<i class="no-highlight">58</i>&nbsp;                var prev = bp[i - 1][j]
+<i class="no-highlight">59</i>&nbsp;                var list = mutableListOf&lt;String&gt;()
+<i class="no-highlight">60</i>&nbsp;                for (k in 0..bp[i - 1][j - items[i - 1].weight].iteams.lastIndex)
+<i class="no-highlight">61</i>&nbsp;                    list.add(bp[i - 1][j - items[i - 1].weight].iteams[k])
+<i class="no-highlight">62</i>&nbsp;                list.add(items[i - 1].name)
+<i class="no-highlight">63</i>&nbsp;                var form = BagPack(
+<i class="no-highlight">64</i>&nbsp;                    list,
+<i class="no-highlight">65</i>&nbsp;                    items[i - 1].price + bp[i - 1][j - items[i - 1].weight].price
+<i class="no-highlight">66</i>&nbsp;                )
+<i class="no-highlight">67</i>&nbsp;                if (prev.price &gt; form.price)
+<i class="no-highlight">68</i>&nbsp;                    bp[i][j] = prev
+<i class="no-highlight">69</i>&nbsp;                else
+<i class="no-highlight">70</i>&nbsp;                    bp[i][j] = form
+<i class="no-highlight">71</i>&nbsp;            }
+<i class="no-highlight">72</i>&nbsp;        }
+<i class="no-highlight">73</i>&nbsp;
+<i class="no-highlight">74</i>&nbsp;    var maxPrice = 0
+<i class="no-highlight">75</i>&nbsp;    var ansList = listOf&lt;String&gt;()
+<i class="no-highlight">76</i>&nbsp;    for (i in 0..items.size)
+<i class="no-highlight">77</i>&nbsp;        if (bp[i][capacity].price &gt; maxPrice) {
+<i class="no-highlight">78</i>&nbsp;            maxPrice = bp[i][capacity].price
+<i class="no-highlight">79</i>&nbsp;            ansList = (bp[i][capacity].iteams)
+<i class="no-highlight">80</i>&nbsp;        }
+<i class="no-highlight">81</i>&nbsp;    return ansList.toSet()
+<i class="no-highlight">82</i>&nbsp;}
+<i class="no-highlight">83</i>&nbsp;
+<i class="no-highlight">84</i>&nbsp;    
+</div>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+        var codeBlock = document.getElementById('sourceCode');
+
+        if (codeBlock) {
+            hljs.highlightBlock(codeBlock);
+        }
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2022-03-27 20:16</div>
+</div>
+</body>
+</html>

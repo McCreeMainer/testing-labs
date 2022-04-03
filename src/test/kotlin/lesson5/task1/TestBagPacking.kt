@@ -1,10 +1,10 @@
 package lesson5.task1
 
 import org.junit.jupiter.api.Test
-import org.junit.jupiter.api.assertDoesNotThrow
 import randomString
 import kotlin.random.Random.Default.nextInt
 import kotlin.test.assertEquals
+import kotlin.test.fail
 
 class TestBagPacking {
 
@@ -159,13 +159,15 @@ class TestBagPacking {
 
     @Test
     fun `Test bagPacking big data set`() {
-        assertDoesNotThrow {
+        try {
             bagPacking(
                 (1..10000).associate {
                     randomString(20) to (nextInt(1, Int.MAX_VALUE) to nextInt(1, Int.MAX_VALUE))
                 },
                 1000000
             )
+        } catch (e: Throwable) {
+            fail()
         }
     }
 }
