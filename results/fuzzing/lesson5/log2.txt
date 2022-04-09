@@ -1,0 +1,65 @@
+PS D:\Poly\Testing\testing-labs> docker run -v D:\Poly\Testing\testing-labs\build\libs:/fuzzing cifuzz/jazzer "-runs=1000" "--cp=testing-labs.jar" --target_class="lesson5.fuzzing.BagPackingFuzzerTarget"
+INFO: Loaded 115 hooks from com.code_intelligence.jazzer.runtime.TraceCmpHooks
+INFO: Loaded 4 hooks from com.code_intelligence.jazzer.runtime.TraceDivHooks
+INFO: Loaded 2 hooks from com.code_intelligence.jazzer.runtime.TraceIndirHooks
+INFO: Loaded 4 hooks from com.code_intelligence.jazzer.runtime.NativeLibHooks
+INFO: Loaded 8 hooks from com.code_intelligence.jazzer.sanitizers.Deserialization
+INFO: Loaded 3 hooks from com.code_intelligence.jazzer.sanitizers.ExpressionLanguageInjection
+INFO: Loaded 70 hooks from com.code_intelligence.jazzer.sanitizers.LdapInjection
+INFO: Loaded 46 hooks from com.code_intelligence.jazzer.sanitizers.NamingContextLookup
+INFO: Loaded 1 hooks from com.code_intelligence.jazzer.sanitizers.OsCommandInjection
+INFO: Loaded 36 hooks from com.code_intelligence.jazzer.sanitizers.ReflectiveCall
+INFO: Loaded 8 hooks from com.code_intelligence.jazzer.sanitizers.RegexInjection
+INFO: Loaded 16 hooks from com.code_intelligence.jazzer.sanitizers.RegexRoadblocks
+INFO: Instrumented java.util.regex.Pattern$BnM with custom hooks only (took 8 ms, size +20%)
+INFO: Instrumented java.util.regex.Pattern$BackRef with custom hooks only (took 1 ms, size +34%)
+INFO: Instrumented java.util.regex.Pattern$Branch with custom hooks only (took 2 ms, size +28%)
+INFO: Instrumented java.util.regex.Pattern$BranchConn with custom hooks only (took 1 ms, size +56%)
+INFO: Instrumented java.util.regex.Pattern$BmpCharPropertyGreedy with custom hooks only (took 1 ms, size +31%)
+INFO: Instrumented java.util.regex.Pattern$GroupCurly with custom hooks only (took 3 ms, size +34%)
+INFO: Instrumented java.util.regex.Pattern$Ques with custom hooks only (took 2 ms, size +78%)
+INFO: Instrumented java.util.regex.Pattern$Curly with custom hooks only (took 3 ms, size +49%)
+INFO: Instrumented java.util.regex.Matcher with custom hooks only (took 12 ms, size +4%)
+INFO: Instrumented java.util.regex.Pattern$Start with custom hooks only (took 0 ms, size +36%)
+INFO: Instrumented java.util.regex.Pattern$First with custom hooks only (took 1 ms, size +52%)
+INFO: Instrumented java.util.regex.Pattern$Slice with custom hooks only (took 0 ms, size +45%)
+INFO: Instrumented java.util.regex.Pattern$CharPropertyGreedy with custom hooks only (took 0 ms, size +26%)
+INFO: Instrumented java.util.regex.Pattern$BmpCharProperty with custom hooks only (took 0 ms, size +36%)
+INFO: Instrumented java.util.regex.Pattern$CharProperty with custom hooks only (took 1 ms, size +33%)
+INFO: Instrumented java.util.regex.Pattern$GroupHead with custom hooks only (took 3 ms, size +50%)
+INFO: Instrumented java.util.regex.Pattern with custom hooks only (took 40 ms, size +3%)
+INFO: Instrumented lesson5.fuzzing.BagPackingFuzzerTarget (took 25 ms, size +9%)
+INFO: Instrumented lesson5.fuzzing.BagPackingFuzzerTarget$Companion (took 3 ms, size +14%)
+INFO: libFuzzer ignores flags that start with '--'
+INFO: Running with entropic power schedule (0xFF, 100).
+INFO: Seed: 1051099713
+INFO: Loaded 1 modules   (512 inline 8-bit counters): 512 [0x11670b0, 0x11672b0),
+INFO: Loaded 1 PC tables (512 PCs): 512 [0x1120c10,0x1122c10),
+INFO: -max_len is not provided; libFuzzer will not generate inputs larger than 4096 bytes
+INFO: Instrumented lesson5.task1.MapKt (took 4 ms, size +26%)
+INFO: Instrumented lesson5.task1.Item (took 2 ms, size +8%)
+INFO: Instrumented lesson5.task1.BagPack (took 1 ms, size +7%)
+INFO: A corpus is not provided, starting from an empty corpus
+#2      INITED cov: 74 ft: 74 corp: 1/1b exec/s: 0 rss: 712Mb
+#3      NEW    cov: 74 ft: 78 corp: 2/2b lim: 4 exec/s: 0 rss: 712Mb L: 1/1 MS: 1 CrossOver-
+#4      NEW    cov: 74 ft: 100 corp: 3/3b lim: 4 exec/s: 0 rss: 712Mb L: 1/1 MS: 1 ChangeByte-
+#5      NEW    cov: 74 ft: 116 corp: 4/4b lim: 4 exec/s: 0 rss: 712Mb L: 1/1 MS: 1 ChangeByte-
+#8      NEW    cov: 74 ft: 120 corp: 5/6b lim: 4 exec/s: 0 rss: 712Mb L: 2/2 MS: 3 ShuffleBytes-CrossOver-CopyPart-
+#9      NEW    cov: 74 ft: 123 corp: 6/7b lim: 4 exec/s: 0 rss: 712Mb L: 1/2 MS: 1 ChangeBit-
+#10     NEW    cov: 74 ft: 127 corp: 7/10b lim: 4 exec/s: 3 rss: 1460Mb L: 3/3 MS: 1 CopyPart-
+INFO: Instrumented java.util.regex.Pattern$SliceS with custom hooks only (took 1 ms, size +42%)
+INFO: Instrumented java.lang.ProcessBuilder with custom hooks only (took 4 ms, size +6%)
+== Java Exception:
+DEDUP_TOKEN: 0fe39c0eb0248c28
+com.code_intelligence.jazzer.api.FuzzerSecurityIssueLow: Out of memory (use '-Xmx1620m' to reproduce)
+Caused by: java.lang.OutOfMemoryError: Java heap space
+        at lesson5.task1.MapKt.bagPacking(Map.kt:44)
+        at lesson5.fuzzing.BagPackingFuzzerTarget$Companion.fuzzerTestOneInput(BagPackingFuzzerTarget.kt:15)
+        at lesson5.fuzzing.BagPackingFuzzerTarget.fuzzerTestOneInput(BagPackingFuzzerTarget.kt)
+== libFuzzer crashing input ==
+MS: 2 InsertByte-CopyPart-; base unit: e9f987c3ab268ba6cf1c2ca075d6d26b01791214
+0x91,0x91,0x3d,0x3d,
+\x91\x91==
+artifact_prefix='./'; Test unit written to ./crash-0287ecddf32e7ede9be2fe9dcbcc448b040e4e97
+Base64: kZE9PQ==
+reproducer_path='.'; Java reproducer written to ./Crash_0287ecddf32e7ede9be2fe9dcbcc448b040e4e97.java

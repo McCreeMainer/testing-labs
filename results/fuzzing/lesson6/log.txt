@@ -1,0 +1,73 @@
+PS D:\Poly\Testing\testing-labs\build\libs> docker run -v D:\Poly\Testing\testing-labs\build\libs:/fuzzing cifuzz/jazzer "-runs=10000" "--cp=testing-labs.jar" --target_class="lesson6.fuzzing.ParseFuzzerTarget"
+INFO: Loaded 115 hooks from com.code_intelligence.jazzer.runtime.TraceCmpHooks
+INFO: Loaded 4 hooks from com.code_intelligence.jazzer.runtime.TraceDivHooks
+INFO: Loaded 2 hooks from com.code_intelligence.jazzer.runtime.TraceIndirHooks
+INFO: Loaded 4 hooks from com.code_intelligence.jazzer.runtime.NativeLibHooks
+INFO: Loaded 8 hooks from com.code_intelligence.jazzer.sanitizers.Deserialization
+INFO: Loaded 3 hooks from com.code_intelligence.jazzer.sanitizers.ExpressionLanguageInjection
+INFO: Loaded 70 hooks from com.code_intelligence.jazzer.sanitizers.LdapInjection
+INFO: Loaded 46 hooks from com.code_intelligence.jazzer.sanitizers.NamingContextLookup
+INFO: Loaded 1 hooks from com.code_intelligence.jazzer.sanitizers.OsCommandInjection
+INFO: Loaded 36 hooks from com.code_intelligence.jazzer.sanitizers.ReflectiveCall
+INFO: Loaded 8 hooks from com.code_intelligence.jazzer.sanitizers.RegexInjection
+INFO: Loaded 16 hooks from com.code_intelligence.jazzer.sanitizers.RegexRoadblocks
+INFO: Instrumented java.util.regex.Pattern$BnM with custom hooks only (took 8 ms, size +20%)
+INFO: Instrumented java.util.regex.Pattern$BackRef with custom hooks only (took 1 ms, size +34%)
+INFO: Instrumented java.util.regex.Pattern$Branch with custom hooks only (took 2 ms, size +28%)
+INFO: Instrumented java.util.regex.Pattern$BranchConn with custom hooks only (took 1 ms, size +56%)
+INFO: Instrumented java.util.regex.Pattern$BmpCharPropertyGreedy with custom hooks only (took 0 ms, size +31%)
+INFO: Instrumented java.util.regex.Pattern$GroupCurly with custom hooks only (took 3 ms, size +34%)
+INFO: Instrumented java.util.regex.Pattern$Ques with custom hooks only (took 1 ms, size +78%)
+INFO: Instrumented java.util.regex.Pattern$Curly with custom hooks only (took 2 ms, size +49%)
+INFO: Instrumented java.util.regex.Matcher with custom hooks only (took 10 ms, size +4%)
+INFO: Instrumented java.util.regex.Pattern$Start with custom hooks only (took 0 ms, size +36%)
+INFO: Instrumented java.util.regex.Pattern$First with custom hooks only (took 1 ms, size +52%)
+INFO: Instrumented java.util.regex.Pattern$Slice with custom hooks only (took 0 ms, size +45%)
+INFO: Instrumented java.util.regex.Pattern$CharPropertyGreedy with custom hooks only (took 0 ms, size +26%)
+INFO: Instrumented java.util.regex.Pattern$BmpCharProperty with custom hooks only (took 0 ms, size +36%)
+INFO: Instrumented java.util.regex.Pattern$CharProperty with custom hooks only (took 0 ms, size +33%)
+INFO: Instrumented java.util.regex.Pattern$GroupHead with custom hooks only (took 1 ms, size +50%)
+INFO: Instrumented java.util.regex.Pattern with custom hooks only (took 16 ms, size +3%)
+INFO: Instrumented lesson6.fuzzing.ParseFuzzerTarget (took 23 ms, size +8%)
+INFO: libFuzzer ignores flags that start with '--'
+INFO: Running with entropic power schedule (0xFF, 100).
+INFO: Seed: 4217670254
+INFO: Loaded 1 modules   (512 inline 8-bit counters): 512 [0x18fc1b0, 0x18fc3b0),
+INFO: Loaded 1 PC tables (512 PCs): 512 [0x18bd420,0x18bf420),
+INFO: -max_len is not provided; libFuzzer will not generate inputs larger than 4096 bytes
+INFO: Instrumented lesson6.task1.ParseKt (took 3 ms, size +20%)
+INFO: A corpus is not provided, starting from an empty corpus
+#2      INITED cov: 14 ft: 14 corp: 1/1b exec/s: 0 rss: 704Mb
+#447    NEW    cov: 22 ft: 22 corp: 2/8b lim: 8 exec/s: 0 rss: 705Mb L: 7/7 MS: 5 InsertByte-CMP-CopyPart-CopyPart-ChangeBit- DE: "\x00\x00\x00\x00"-
+#475    REDUCE cov: 22 ft: 22 corp: 2/7b lim: 8 exec/s: 0 rss: 705Mb L: 6/6 MS: 3 CMP-ChangeBit-EraseBytes- DE: "\x00\x00"-
+#503    REDUCE cov: 22 ft: 22 corp: 2/6b lim: 8 exec/s: 0 rss: 705Mb L: 5/5 MS: 3 ShuffleBytes-InsertByte-EraseBytes-
+#602    REDUCE cov: 23 ft: 29 corp: 3/12b lim: 8 exec/s: 0 rss: 705Mb L: 6/6 MS: 4 CrossOver-ShuffleBytes-ChangeBit-CopyPart-
+#619    REDUCE cov: 24 ft: 30 corp: 4/15b lim: 8 exec/s: 0 rss: 705Mb L: 3/6 MS: 2 ShuffleBytes-EraseBytes-
+#645    REDUCE cov: 24 ft: 30 corp: 4/14b lim: 8 exec/s: 0 rss: 705Mb L: 5/5 MS: 1 EraseBytes-
+#692    REDUCE cov: 24 ft: 37 corp: 5/22b lim: 8 exec/s: 0 rss: 705Mb L: 8/8 MS: 2 CopyPart-ChangeBit-
+#739    REDUCE cov: 24 ft: 37 corp: 5/21b lim: 8 exec/s: 0 rss: 705Mb L: 4/8 MS: 2 ChangeBinInt-EraseBytes-
+#806    REDUCE cov: 24 ft: 37 corp: 5/19b lim: 8 exec/s: 0 rss: 705Mb L: 2/8 MS: 2 EraseBytes-ChangeBit-
+#958    NEW    cov: 24 ft: 44 corp: 6/27b lim: 8 exec/s: 0 rss: 705Mb L: 8/8 MS: 2 ShuffleBytes-CopyPart-
+#1091   REDUCE cov: 24 ft: 44 corp: 6/26b lim: 8 exec/s: 0 rss: 705Mb L: 7/8 MS: 3 CrossOver-CrossOver-CrossOver-
+#1118   REDUCE cov: 24 ft: 44 corp: 6/25b lim: 8 exec/s: 0 rss: 705Mb L: 4/8 MS: 2 CopyPart-EraseBytes-
+#1129   REDUCE cov: 24 ft: 44 corp: 6/24b lim: 8 exec/s: 0 rss: 705Mb L: 7/7 MS: 1 EraseBytes-
+#1135   REDUCE cov: 24 ft: 44 corp: 6/23b lim: 8 exec/s: 0 rss: 705Mb L: 6/7 MS: 1 EraseBytes-
+#1471   REDUCE cov: 24 ft: 45 corp: 7/32b lim: 11 exec/s: 0 rss: 705Mb L: 9/9 MS: 1 CopyPart-
+#1732   REDUCE cov: 24 ft: 45 corp: 7/31b lim: 11 exec/s: 0 rss: 705Mb L: 3/9 MS: 1 EraseBytes-
+#1964   REDUCE cov: 24 ft: 45 corp: 7/30b lim: 11 exec/s: 0 rss: 705Mb L: 8/8 MS: 2 EraseBytes-CopyPart-
+#2046   REDUCE cov: 24 ft: 45 corp: 7/29b lim: 11 exec/s: 0 rss: 705Mb L: 7/7 MS: 2 EraseBytes-InsertByte-
+#2683   REDUCE cov: 24 ft: 45 corp: 7/28b lim: 17 exec/s: 0 rss: 705Mb L: 6/7 MS: 2 ShuffleBytes-EraseBytes-
+#3017   REDUCE cov: 24 ft: 51 corp: 8/40b lim: 17 exec/s: 0 rss: 705Mb L: 12/12 MS: 4 CrossOver-PersAutoDict-CrossOver-CopyPart- DE: "\x00\x00\x00\x00"-
+#3299   NEW    cov: 24 ft: 52 corp: 9/56b lim: 17 exec/s: 0 rss: 705Mb L: 16/16 MS: 2 CopyPart-InsertByte-
+#3683   REDUCE cov: 24 ft: 52 corp: 9/55b lim: 17 exec/s: 0 rss: 705Mb L: 5/16 MS: 4 ShuffleBytes-CrossOver-EraseBytes-CrossOver-
+#3990   REDUCE cov: 24 ft: 52 corp: 9/54b lim: 17 exec/s: 0 rss: 705Mb L: 15/15 MS: 2 InsertByte-EraseBytes-
+#5183   REDUCE cov: 24 ft: 52 corp: 9/53b lim: 25 exec/s: 0 rss: 705Mb L: 2/15 MS: 3 ShuffleBytes-EraseBytes-CopyPart-
+#8033   REDUCE cov: 24 ft: 57 corp: 10/83b lim: 53 exec/s: 0 rss: 705Mb L: 30/30 MS: 5 ShuffleBytes-ShuffleBytes-PersAutoDict-ChangeBit-CrossOver- DE: "\x00\x00"-
+#8089   NEW    cov: 24 ft: 59 corp: 11/113b lim: 53 exec/s: 0 rss: 705Mb L: 30/30 MS: 1 CopyPart-
+#8945   REDUCE cov: 24 ft: 59 corp: 11/112b lim: 58 exec/s: 0 rss: 705Mb L: 29/30 MS: 1 EraseBytes-
+#10000  DONE   cov: 24 ft: 59 corp: 11/112b lim: 68 exec/s: 0 rss: 705Mb
+###### Recommended dictionary. ######
+"\x00\x00\x00\x00" # Uses: 382
+"\x00\x00" # Uses: 442
+###### End of recommended dictionary. ######
+Done 10000 runs in 0 second(s)
